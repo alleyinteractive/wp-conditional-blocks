@@ -1,11 +1,11 @@
 <?php
 /**
- * Create WordPress Plugin Tests: Example Unit Test
+ * WP Conditional Blocks Tests: Example Unit Test
  *
- * @package create-wordpress-plugin
+ * @package wp-conditional-blocks
  */
 
-namespace Create_WordPress_Plugin\Tests\Unit;
+namespace Alley\WP\WP_Conditional_Blocks\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 

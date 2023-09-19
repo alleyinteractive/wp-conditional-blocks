@@ -1,17 +1,17 @@
 {
-    "name": "alleyinteractive/create-wordpress-plugin",
-    "description": "A skeleton WordPress plugin",
+    "name": "alleyinteractive/wp-conditional-blocks",
+    "description": "WordPress blocks that can be shown based on conditions",
     "type": "wordpress-plugin",
     "keywords": [
         "alleyinteractive",
-        "create-wordpress-plugin"
+        "wp-conditional-blocks"
     ],
-    "homepage": "https://github.com/alleyinteractive/create-wordpress-plugin",
+    "homepage": "https://github.com/alleyinteractive/wp-conditional-blocks",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "author_name",
-            "email": "email@domain.com"
+            "name": "Alley Interactive",
+            "email": "info@alley.com"
         }
     ],
     "require": {
@@ -34,10 +34,10 @@
     "extra": {
         "wordpress-autoloader": {
             "autoload": {
-                "Create_WordPress_Plugin\\": "src"
+                "Alley\\WP\\WP_Conditional_Blocks": "src"
             },
             "autoload-dev": {
-                "Create_WordPress_Plugin\\Tests\\": "tests"
+                "Alley\\WP\\WP_Conditional_Blocks\\Tests": "tests"
             }
         }
     },

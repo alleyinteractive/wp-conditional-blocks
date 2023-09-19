@@ -2,10 +2,10 @@
 /**
  * Contains functions for working with meta.
  *
- * @package create-wordpress-plugin
+ * @package wp-conditional-blocks
  */
 
-namespace Create_WordPress_Plugin;
+namespace Alley\WP\WP_Conditional_Blocks;
 
 // Register custom meta fields.
 register_post_meta_from_defs();
@@ -36,7 +36,7 @@ function register_meta_helper(
 		throw new \InvalidArgumentException(
 			esc_html__(
 				'Object type must be one of "post", "term".',
-				'create-wordpress-plugin'
+				'wp-conditional-blocks'
 			)
 		);
 	}
@@ -72,7 +72,7 @@ function register_meta_helper(
 	 * @param string          $meta_key     The meta key to register.
 	 */
 	$args = apply_filters(
-		'create_wordpress_plugin_register_meta_helper_args', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+		'wp_conditional_blocks_register_meta_helper_args', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		wp_parse_args(
 			$args,
 			[

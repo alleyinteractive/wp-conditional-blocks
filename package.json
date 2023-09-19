@@ -1,7 +1,7 @@
 {
-  "name": "create-wordpress-plugin",
+  "name": "wp-conditional-blocks",
   "license": "GPL-2.0-or-later",
-  "main": "plugin.php",
+  "main": "wp-conditional-blocks.php",
   "engines": {
     "node": "16",
     "npm": "8"
@@ -12,9 +12,9 @@
   ],
   "scripts": {
     "build": "wp-scripts build --webpack-copy-php --webpack-src-dir=blocks",
-    "create-block": "npx @alleyinteractive/create-block@latest -n create-wordpress-plugin",
-    "create-entry": "npx @alleyinteractive/create-entry@latest -n create-wordpress-plugin -t create-wordpress-plugin",
-    "create-slotfill": "npx @alleyinteractive/create-entry -s -n create-wordpress-plugin -t create-wordpress-plugin",
+    "create-block": "npx @alleyinteractive/create-block@latest -n wp-conditional-blocks",
+    "create-entry": "npx @alleyinteractive/create-entry@latest -n wp-conditional-blocks -t wp-conditional-blocks",
+    "create-slotfill": "npx @alleyinteractive/create-entry -s -n wp-conditional-blocks -t wp-conditional-blocks",
     "precheck-types": "check-node-version --package",
     "check-types": "tsc",
     "lint:fix": "eslint --ext .jsx --ext .js --ext .ts --ext .tsx . --fix",
