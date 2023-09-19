@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: Create WordPress Plugin
- * Plugin URI: https://github.com/alleyinteractive/create-wordpress-plugin
- * Description: A skeleton WordPress plugin
+ * Plugin Name: WP Conditional Blocks
+ * Plugin URI: https://github.com/alleyinteractive/wp-conditional-blocks
+ * Description: WordPress blocks that can be shown based on conditions
  * Version: 0.1.0
- * Author: author_name
- * Author URI: https://github.com/alleyinteractive/create-wordpress-plugin
+ * Author: Alley Interactive
+ * Author URI: https://github.com/alleyinteractive/wp-conditional-blocks
  * Requires at least: 5.9
  * Tested up to: 6.2
  *
- * Text Domain: create-wordpress-plugin
+ * Text Domain: wp-conditional-blocks
  * Domain Path: /languages/
  *
- * @package create-wordpress-plugin
+ * @package wp-conditional-blocks
  */
 
-namespace Create_WordPress_Plugin;
+namespace Alley\WP\WP_Conditional_Blocks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -24,9 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Root directory to this plugin.
  */
-define( 'CREATE_WORDPRESS_PLUGIN_DIR', __DIR__ );
-
-/* Start Composer Loader */
+define( 'WP_CONDITIONAL_BLOCKS_DIR', __DIR__ );
 
 // Check if Composer is installed (remove if Composer is not required for your plugin).
 if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
@@ -40,7 +38,7 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 			function () {
 				?>
 				<div class="notice notice-error">
-					<p><?php esc_html_e( 'Composer is not installed and create-wordpress-plugin cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'create-wordpress-plugin' ); ?></p>
+					<p><?php esc_html_e( 'Composer is not installed and wp-conditional-blocks cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'wp-conditional-blocks' ); ?></p>
 				</div>
 				<?php
 			}
@@ -52,8 +50,6 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 	// Load Composer dependencies.
 	require_once __DIR__ . '/vendor/wordpress-autoload.php';
 }
-
-/* End Composer Loader */
 
 // Load the plugin's main files.
 require_once __DIR__ . '/src/assets.php';

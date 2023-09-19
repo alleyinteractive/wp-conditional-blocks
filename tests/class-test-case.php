@@ -1,16 +1,16 @@
 <?php
 /**
- * Create WordPress Plugin Tests: Base Test Class
+ * WP Conditional Blocks Tests: Base Test Class
  *
- * @package create-wordpress-plugin
+ * @package wp-conditional-blocks
  */
 
-namespace Create_WordPress_Plugin\Tests;
+namespace Alley\WP\WP_Conditional_Blocks\Tests;
 
 use Mantle\Testkit\Test_Case as TestkitTest_Case;
 
 /**
- * Create WordPress Plugin Base Test Case
+ * WP Conditional Blocks Base Test Case
  */
 abstract class Test_Case extends TestkitTest_Case {
 

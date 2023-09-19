@@ -1,13 +1,13 @@
 <?php
 /**
- * Create WordPress Plugin Tests: Example Feature Test
+ * WP Conditional Blocks Tests: Example Feature Test
  *
- * @package create-wordpress-plugin
+ * @package wp-conditional-blocks
  */
 
-namespace Create_WordPress_Plugin\Tests\Feature;
+namespace Alley\WP\WP_Conditional_Blocks\Tests\Feature;
 
-use Create_WordPress_Plugin\Tests\Test_Case;
+use Alley\WP\WP_Conditional_Blocks\Tests\Test_Case;
 
 /**
  * A test suite for an example feature.

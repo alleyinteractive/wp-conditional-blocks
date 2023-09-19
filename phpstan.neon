@@ -9,7 +9,7 @@ parameters:
 		- blocks/
 		- entries/
 		- src/
-		- plugin.php
+		- wp-conditional-blocks.php
 
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
