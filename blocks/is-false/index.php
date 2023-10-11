@@ -12,7 +12,7 @@
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function wp_curate_is_false_block_init(): void {
+function wp_conditional_blocks_is_false_block_init(): void {
 	// Register the block by passing the location of block.json.
 	register_block_type(
 		__DIR__,
@@ -21,7 +21,7 @@ function wp_curate_is_false_block_init(): void {
 		],
 	);
 }
-add_action( 'init', 'wp_curate_is_false_block_init' );
+add_action( 'init', 'wp_conditional_blocks_is_false_block_init' );
 
 /**
  * Short-circuit the display of blocks inside if the outer condition isn't false.
@@ -30,7 +30,7 @@ add_action( 'init', 'wp_curate_is_false_block_init' );
  * @param WP_Block      $parsed_block The block being rendered.
  * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
  */
-function wp_curate_pre_render_is_false_block( $pre_render, $parsed_block, $parent_block ): string|null {
+function wp_conditional_blocks_pre_render_is_false_block( $pre_render, $parsed_block, $parent_block ): string|null {
 	/*
 	 * Previously, the condition block added 'conditionResult' as context to this block. However,
 	 * limitations in the context API meant that the context didn't get passed to child blocks when
@@ -50,7 +50,7 @@ function wp_curate_pre_render_is_false_block( $pre_render, $parsed_block, $paren
 			$context['postId'] = $parent_block->context['postId'];
 		}
 
-		$result = wp_curate_condition_block_result( $parent_block->parsed_block, $context );
+		$result = wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context );
 
 		if ( false !== $result ) {
 			$pre_render = '';
@@ -59,4 +59,4 @@ function wp_curate_pre_render_is_false_block( $pre_render, $parsed_block, $paren
 
 	return $pre_render;
 }
-add_filter( 'pre_render_block', 'wp_curate_pre_render_is_false_block', 10, 3 );
+add_filter( 'pre_render_block', 'wp_conditional_blocks_pre_render_is_false_block', 10, 3 );

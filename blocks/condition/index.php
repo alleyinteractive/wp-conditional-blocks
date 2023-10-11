@@ -8,8 +8,8 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamName
  */
 
-use Alley\WP\WP_Curate\Global_Post_Query;
-use Alley\WP\WP_Curate\Validator\Slug_Is_In_Category;
+use Alley\WP\WP_Conditional_Blocks\Global_Post_Query;
+use Alley\WP\WP_Conditional_Blocks\Validator\Slug_Is_In_Category;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -18,7 +18,7 @@ use Alley\WP\WP_Curate\Validator\Slug_Is_In_Category;
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function wp_curate_condition_block_init(): void {
+function wp_conditional_blocks_condition_block_init(): void {
 	// Register the block by passing the location of block.json.
 	register_block_type(
 		__DIR__,
@@ -27,7 +27,7 @@ function wp_curate_condition_block_init(): void {
 		],
 	);
 }
-add_action( 'init', 'wp_curate_condition_block_init' );
+add_action( 'init', 'wp_conditional_blocks_condition_block_init' );
 
 /**
  * Evaluate the result of condition block attributes.
@@ -44,7 +44,7 @@ add_action( 'init', 'wp_curate_condition_block_init' );
  * @param array{'postId'?: int} $context Available context.
  * @return bool
  */
-function wp_curate_condition_block_result( array $parsed_block, array $context ): bool {
+function wp_conditional_blocks_condition_block_result( array $parsed_block, array $context ): bool {
 	global $wp_query;
 
 	$num_conditions = 0;
@@ -130,7 +130,7 @@ function wp_curate_condition_block_result( array $parsed_block, array $context )
 		}
 
 		if ( count( $validator ) > 0 ) {
-			if ( $validator->isValid( wp_curate_current_counter_block() ) ) {
+			if ( $validator->isValid( wp_conditional_blocks_current_counter_block() ) ) {
 				$num_true++;
 			}
 		}
@@ -161,7 +161,7 @@ function wp_curate_condition_block_result( array $parsed_block, array $context )
 			 * @param mixed $condition Condition name.
 			 * @param int   $post_id   Post ID.
 			 */
-			if ( true === apply_filters( 'wp_curate_condition_block_post_condition', false, $condition, $context['postId'] ) ) {
+			if ( true === apply_filters( 'wp_conditional_blocks_condition_block_post_condition', false, $condition, $context['postId'] ) ) {
 				$num_true++;
 			}
 		}
@@ -188,7 +188,7 @@ function wp_curate_condition_block_result( array $parsed_block, array $context )
 			 * @param array    $context  Available context.
 			 * @param WP_Query $wp_query Global query object.
 			 */
-			$result = apply_filters( "wp_curate_condition_block_{$name}_condition", false, $context, $wp_query );
+			$result = apply_filters( "wp_conditional_blocks_condition_block_{$name}_condition", false, $context, $wp_query );
 
 			if ( true === $result ) {
 				$num_true++;
