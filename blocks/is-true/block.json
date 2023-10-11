@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wp-conditional-blocks/is-true",
+	"version": "0.1.0",
+	"title": "Is true",
+	"category": "theme",
+	"icon": "star-filled",
+	"description": "Displays when the condition is true.",
+	"textdomain": "wp-conditional-blocks",
+	"editorScript": "file:index.ts",
+  "parent": ["condition"]
+}
