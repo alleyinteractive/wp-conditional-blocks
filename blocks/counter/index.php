@@ -80,14 +80,13 @@ add_filter( 'render_block_data', 'wp_conditional_blocks_inject_counter_block', 1
  *
  * @param array<mixed> $attributes Block attributes.
  * @param string       $content    Block default content.
- * @param WP_Block     $block      Block instance.
  * @return string Block output.
  */
-function wp_conditional_blocks_render_counter_block( $attributes, $content, $block ): string {
+function wp_conditional_blocks_render_counter_block( $attributes, $content ): string {
 	global $wp_conditional_blocks_template_stack;
 
 	if ( is_array( $wp_conditional_blocks_template_stack ) && count( $wp_conditional_blocks_template_stack ) > 0 ) {
-		$last                       = array_pop( $wp_conditional_blocks_template_stack );
+		$last                                   = array_pop( $wp_conditional_blocks_template_stack );
 		$wp_conditional_blocks_template_stack[] = $last + 1;
 	}
 
