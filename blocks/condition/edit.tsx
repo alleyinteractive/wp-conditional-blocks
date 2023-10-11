@@ -46,11 +46,14 @@ export default function Edit({
       </div>
 
       <InspectorControls>
+        {/* @ts-ignore-next-line */}
         <PanelBody
           title={__('Condition', 'wp-conditional-blocks')}
           initialOpen
         >
+          {/* @ts-ignore-next-line */}
           <PanelRow>
+            {/* @ts-ignore-next-line */}
             <TextControl
               label={__('Query', 'wp-conditional-blocks')}
               help={__('Query condition, ie "is_home" or "is_category"', 'wp-conditional-blocks')}
@@ -58,8 +61,9 @@ export default function Edit({
               value={query}
             />
           </PanelRow>
-
+          {/* @ts-ignore-next-line */}
           <PanelRow>
+            {/* @ts-ignore-next-line */}
             <TextControl
               label={__('Post', 'wp-conditional-blocks')}
               help={__('Post condition, ie "is_content"', 'wp-conditional-blocks')}
@@ -68,7 +72,9 @@ export default function Edit({
             />
           </PanelRow>
 
+          {/* @ts-ignore-next-line */}
           <PanelRow>
+            {/* @ts-ignore-next-line */}
             <TextControl
               label={__('Custom', 'wp-conditional-blocks')}
               help={__('Custom condition, ie "is_column"', 'wp-conditional-blocks')}
@@ -77,7 +83,9 @@ export default function Edit({
             />
           </PanelRow>
 
+          {/* @ts-ignore-next-line */}
           <PanelRow>
+            {/* @ts-ignore-next-line */}
             <TextControl
               label={__('Condition', 'wp-conditional-blocks')}
               help={__('Any other condition', 'wp-conditional-blocks')}
@@ -88,11 +96,13 @@ export default function Edit({
         </PanelBody>
 
         { parentBlock === 'wp-conditional-blocks/query' ? (
+          /* @ts-ignore-next-line */
           <PanelBody
             title={__('Index Condition', 'wp-conditional-blocks')}
           >
             <p>{__('Checks the index of how many times the parent condition block has been rendered, ie "Equal to 0", "Greater than 5"', 'wp-conditional-blocks')}</p>
 
+            {/* @ts-ignore-next-line */}
             <PanelRow>
               <SelectControl
                 label={__('Index Operator', 'wp-conditional-blocks')}
@@ -110,7 +120,9 @@ export default function Edit({
               />
             </PanelRow>
 
+            {/* @ts-ignore-next-line */}
             <PanelRow>
+              {/* @ts-ignore-next-line */}
               <TextControl
                 label={__('Index compared', 'wp-conditional-blocks')}
                 onChange={(next) => setAttributes({ index: { [operator]: next } })}
