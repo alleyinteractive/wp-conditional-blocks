@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@alleyinteractive/block-editor-tools": "^0.4.0",
-    "@types/jest": "^29.5.7",
+    "@types/jest": "^29.5.8",
     "@types/wordpress__block-editor": "^11.5.0",
     "@wordpress/a11y": "^3.30.0",
     "@wordpress/annotations": "^2.30.0",
