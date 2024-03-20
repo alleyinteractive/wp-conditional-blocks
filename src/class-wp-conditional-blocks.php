@@ -72,7 +72,13 @@ class WP_Conditional_Blocks {
 		return $conditions[ $slug ] ?? null;
 	}
 
-	public function get_conditions() {
+	/**
+	 * Get all conditions
+	 *
+	 * @return array
+	 */
+	public function get_conditions(): array {
+		return $this->conditions;
 	}
 
 	public function delete_condition() {
