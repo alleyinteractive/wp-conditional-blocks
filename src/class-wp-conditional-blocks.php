@@ -46,8 +46,8 @@ class WP_Conditional_Blocks {
 	/**
 	 * Adds a condition.
 	 *
-	 * @param string $name Name of the condition.
-	 * @param string $slug Slug of the condition.
+	 * @param string   $name Name of the condition.
+	 * @param string   $slug Slug of the condition.
 	 * @param callable $callable Callable function of the condition.
 	 *
 	 * @return void
@@ -56,21 +56,17 @@ class WP_Conditional_Blocks {
 		self::$conditions[] = [
 			'name'     => $name,
 			'slug'     => $slug,
-			'callable' => $callable
+			'callable' => $callable,
 		];
 	}
 
 	public function get_condition() {
-
 	}
 
 	public function get_conditions() {
-
 	}
 
 	public function delete_condition() {
-
 	}
-
 }
 add_action( 'wp', WP_Conditional_Blocks::instance() );

@@ -15,9 +15,9 @@ use PHPUnit\Framework\TestCase;
  *
  * @link https://mantle.alley.com/testing/test-framework.html
  */
-class WP_Conditional_Blocks_Tests extends TestCase {
+class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	/**
-	 *
+	 * Tests the add condition method.
 	 *
 	 * @return void
 	 */
