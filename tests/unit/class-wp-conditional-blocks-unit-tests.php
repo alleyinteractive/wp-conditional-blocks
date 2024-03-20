@@ -17,15 +17,18 @@ use PHPUnit\Framework\TestCase;
  */
 class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	/**
-	 * Tests the add condition method.
+	 * Tests the add and get condition methods.
 	 *
 	 * @return void
 	 */
-	public function test_add_condition() {
-		$conditional_blocks = WP_Conditional_Blocks::instance();
-		$conditional_blocks->add_condition( 'Condition from Unit Test', 'is_home', fn() => is_home() );
+	public function test_add_and_get_condition() {
+		$instance = WP_Conditional_Blocks::instance();
+		$instance->add_condition( 'Condition 1', 'condition-1', fn() => true );
+		$instance->add_condition( 'Condition 2', 'condition-2', fn() => true );
 
-		// Assert the condition was added.
-		$this->assertNotEmpty( $conditional_blocks::$conditions, 'The conditions are not empty' );
+		$conditions = $instance->get_conditions();
+
+		$this->assertCount( 2, $conditions );
+		$this->assertContainsOnlyInstancesOf( \Closure::class, array_column( $conditions, 'callable' ) );
 	}
 }
