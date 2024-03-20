@@ -81,7 +81,17 @@ class WP_Conditional_Blocks {
 		return $this->conditions;
 	}
 
-	public function delete_condition() {
+	/**
+	 * Deletes a condition given a slug.
+	 *
+	 * @param string $slug Slug of the condition.
+	 *
+	 * @return void
+	 */
+	public function delete_condition( string $slug ): void {
+		$this->conditions = array_filter( $this->conditions, function ( $condition ) use ( $slug ) {
+			return $condition['slug'] !== $slug;
+		});
 	}
 }
 add_action( 'wp', WP_Conditional_Blocks::instance() );
