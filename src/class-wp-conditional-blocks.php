@@ -23,19 +23,19 @@ class WP_Conditional_Blocks {
 	 *
 	 * @var array
 	 */
-	public static array $conditions = [];
+	private array $conditions = [];
 
 	/**
 	 * Private constructor.
 	 */
-	private function __construct() {}
+	protected function __construct() {}
 
 	/**
-	 * Creates the singleton.
+	 * Creates the singleton instance.
 	 *
-	 * @return WP_Conditional_Blocks The singleton instance.
+	 * @return self The singleton instance.
 	 */
-	public static function instance(): WP_Conditional_Blocks {
+	public static function instance(): self {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
