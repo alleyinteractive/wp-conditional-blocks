@@ -53,14 +53,23 @@ class WP_Conditional_Blocks {
 	 * @return void
 	 */
 	public function add_condition( string $name, string $slug, callable $callable ): void {
-		self::$conditions[] = [
+		$this->conditions[] = [
 			'name'     => $name,
 			'slug'     => $slug,
 			'callable' => $callable,
 		];
 	}
 
-	public function get_condition() {
+	/**
+	 * Get a condition given a slug.
+	 *
+	 * @param string $slug Slug of the condition.
+	 *
+	 * @return array|null
+	 */
+	public function get_condition( string $slug ): ?array {
+		$conditions = array_column( $this->conditions, null, 'slug' );
+		return $conditions[ $slug ] ?? null;
 	}
 
 	public function get_conditions() {
