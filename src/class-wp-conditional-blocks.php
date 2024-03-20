@@ -94,4 +94,4 @@ class WP_Conditional_Blocks {
 		});
 	}
 }
-add_action( 'wp', WP_Conditional_Blocks::instance() );
+add_action( 'wp', [ WP_Conditional_Blocks::instance(), '__construct' ] );
