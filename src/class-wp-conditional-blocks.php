@@ -14,9 +14,9 @@ class WP_Conditional_Blocks {
 	/**
 	 * Singleton instance for this class.
 	 *
-	 * @var WP_Conditional_Blocks
+	 * @var WP_Conditional_Blocks|null
 	 */
-	private static ?WP_Conditional_Blocks $instance = null;
+	private static ?self $instance = null;
 
 	/**
 	 * Array of conditions.
