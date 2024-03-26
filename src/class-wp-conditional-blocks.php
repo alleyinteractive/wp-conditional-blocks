@@ -80,7 +80,9 @@ class WP_Conditional_Blocks {
 	 */
 	public function get_condition( string $slug ): ?array {
 		$conditions = array_column( $this->conditions, null, 'slug' );
-		return $conditions[ $slug ] ?? null;
+		$condition = $conditions[ $slug ] ?? null;
+
+		return apply_filters( 'conditional_blocks_get_condition', $condition, $slug );
 	}
 
 	/**
