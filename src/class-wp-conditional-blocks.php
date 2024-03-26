@@ -82,6 +82,12 @@ class WP_Conditional_Blocks {
 		$conditions = array_column( $this->conditions, null, 'slug' );
 		$condition = $conditions[ $slug ] ?? null;
 
+		/**
+		 * Filters the condition.
+		 *
+		 * @param array $condition The condition array.
+		 * @param string $slug The condition's slug.
+		 */
 		return apply_filters( 'conditional_blocks_get_condition', $condition, $slug );
 	}
 
