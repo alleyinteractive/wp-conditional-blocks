@@ -48,16 +48,27 @@ class WP_Conditional_Blocks {
 	 *
 	 * @param string   $name Name of the condition.
 	 * @param string   $slug Slug of the condition.
-	 * @param callable $callable Callable function of the condition.
+	 * @param callable $condition_callback Callable function of the condition.
 	 *
-	 * @return void
+	 * @return bool True if the condition was added successfully, false otherwise.
 	 */
-	public function add_condition( string $name, string $slug, callable $callable ): void {
-		$this->conditions[] = [
+	public function add_condition( string $name, string $slug, callable $condition_callback ): bool {
+		// Validate input parameters.
+		if ( empty( $name ) || empty( $slug ) || !is_callable( $condition_callback ) ) {
+			return false;
+		}
+
+		$condition_data = [
 			'name'     => $name,
 			'slug'     => $slug,
-			'callable' => $callable,
+			'callable' => $condition_callback,
 		];
+
+		$condition_data = apply_filters( 'conditional_blocks_add_condition', $name, $slug, $condition_callback );
+
+		$this->conditions[] = $condition_data;
+
+		return true;
 	}
 
 	/**
