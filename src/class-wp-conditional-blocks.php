@@ -91,7 +91,14 @@ class WP_Conditional_Blocks {
 	 * @return array
 	 */
 	public function get_conditions(): array {
-		return $this->conditions;
+		$conditions = $this->conditions;
+
+		/**
+		 * Filters the list of conditions.
+		 *
+		 * @param array $conditions The list of conditions.
+		 */
+		return apply_filters( 'conditional_blocks_get_conditions', $conditions );
 	}
 
 	/**
