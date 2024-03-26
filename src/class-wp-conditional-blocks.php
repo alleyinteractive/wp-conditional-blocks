@@ -64,6 +64,13 @@ class WP_Conditional_Blocks {
 			'callable' => $condition_callback,
 		];
 
+		/**
+		 * Filters the condition.
+		 *
+		 * @param string $name Name of the condition.
+		 * @param string $slug Slug of the condition.
+		 * @param callable $condition_callback Callable function of the condition.
+		 */
 		$condition_data = apply_filters( 'conditional_blocks_add_condition', $name, $slug, $condition_callback );
 
 		$this->conditions[] = $condition_data;
