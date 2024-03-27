@@ -54,7 +54,7 @@ class WP_Conditional_Blocks {
 	 */
 	public function add_condition( string $name, string $slug, callable $condition_callback ): bool {
 		// Validate input parameters.
-		if ( empty( $name ) || empty( $slug ) || !is_callable( $condition_callback ) ) {
+		if ( empty( $name ) || empty( $slug ) || ! is_callable( $condition_callback ) ) {
 			return false;
 		}
 
@@ -71,7 +71,7 @@ class WP_Conditional_Blocks {
 		 * @param string $slug Slug of the condition.
 		 * @param callable $condition_callback Callable function of the condition.
 		 */
-		$condition_data = apply_filters( 'conditional_blocks_add_condition', $condition_data );
+		$condition_data = apply_filters( 'wp_conditional_blocks_add_condition', $condition_data );
 
 		$this->conditions[] = $condition_data;
 
@@ -87,7 +87,7 @@ class WP_Conditional_Blocks {
 	 */
 	public function get_condition( string $slug ): ?array {
 		$conditions = array_column( $this->conditions, null, 'slug' );
-		$condition = $conditions[ $slug ] ?? null;
+		$condition  = $conditions[ $slug ] ?? null;
 
 		/**
 		 * Filters the condition.
@@ -95,7 +95,7 @@ class WP_Conditional_Blocks {
 		 * @param array $condition The condition array.
 		 * @param string $slug The condition's slug.
 		 */
-		return apply_filters( 'conditional_blocks_get_condition', $condition, $slug );
+		return apply_filters( 'wp_conditional_blocks_get_condition', $condition, $slug );
 	}
 
 	/**
@@ -111,7 +111,7 @@ class WP_Conditional_Blocks {
 		 *
 		 * @param array $conditions The list of conditions.
 		 */
-		return apply_filters( 'conditional_blocks_get_conditions', $conditions );
+		return apply_filters( 'wp_conditional_blocks_get_conditions', $conditions );
 	}
 
 	/**
@@ -122,9 +122,12 @@ class WP_Conditional_Blocks {
 	 * @return void
 	 */
 	public function delete_condition( string $slug ): void {
-		$this->conditions = array_filter( $this->conditions, function ( $condition ) use ( $slug ) {
-			return $condition['slug'] !== $slug;
-		});
+		$this->conditions = array_filter(
+			$this->conditions,
+			function ( $condition ) use ( $slug ) {
+				return $condition['slug'] !== $slug;
+			}
+		);
 	}
 
 	/**
