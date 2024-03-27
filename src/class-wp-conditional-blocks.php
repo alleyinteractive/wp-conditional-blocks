@@ -139,4 +139,3 @@ class WP_Conditional_Blocks {
 		$this->conditions = [];
 	}
 }
-add_action( 'wp', [ WP_Conditional_Blocks::instance(), '__construct' ] );
