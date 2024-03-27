@@ -126,5 +126,17 @@ class WP_Conditional_Blocks {
 			return $condition['slug'] !== $slug;
 		});
 	}
+
+	/**
+	 * Resets the conditions for testing purposes.
+	 *
+	 * @internal
+	 * @codeCoverageIgnore
+	 *
+	 * @return void
+	 */
+	public function reset_conditions_for_testing(): void {
+		$this->conditions = [];
+	}
 }
 add_action( 'wp', [ WP_Conditional_Blocks::instance(), '__construct' ] );
