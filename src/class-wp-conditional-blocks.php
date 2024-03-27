@@ -71,7 +71,7 @@ class WP_Conditional_Blocks {
 		 * @param string $slug Slug of the condition.
 		 * @param callable $condition_callback Callable function of the condition.
 		 */
-		$condition_data = apply_filters( 'conditional_blocks_add_condition', $name, $slug, $condition_callback );
+		$condition_data = apply_filters( 'conditional_blocks_add_condition', $condition_data );
 
 		$this->conditions[] = $condition_data;
 
