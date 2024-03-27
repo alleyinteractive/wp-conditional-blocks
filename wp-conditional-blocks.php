@@ -63,5 +63,3 @@ function main(): void {
 	WP_Conditional_Blocks::instance();
 }
 main();
-
-
