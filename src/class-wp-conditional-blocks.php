@@ -58,7 +58,7 @@ class WP_Conditional_Blocks {
 			return false;
 		}
 
-		$condition_data = [
+		$condition = [
 			'name'     => $name,
 			'slug'     => $slug,
 			'callable' => $condition_callback,
@@ -67,13 +67,11 @@ class WP_Conditional_Blocks {
 		/**
 		 * Filters the condition.
 		 *
-		 * @param string $name Name of the condition.
-		 * @param string $slug Slug of the condition.
-		 * @param callable $condition_callback Callable function of the condition.
+		 * @param array $condition The condition array.
 		 */
-		$condition_data = apply_filters( 'wp_conditional_blocks_add_condition', $condition_data );
+		$condition = apply_filters( 'wp_conditional_blocks_add_condition', $condition );
 
-		$this->conditions[] = $condition_data;
+		$this->conditions[] = $condition;
 
 		return true;
 	}
