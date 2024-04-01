@@ -60,6 +60,6 @@ require_once __DIR__ . '/src/meta.php';
  * Instantiate the plugin.
  */
 function main(): void {
-	WP_Conditional_Blocks::instance();
+	WP_Conditional_Blocks::get_instance();
 }
 main();

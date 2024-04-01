@@ -7,10 +7,14 @@
 
 namespace Alley\WP\WP_Conditional_Blocks;
 
+use Alley\WP\WP_Conditional_Blocks\traits\Singleton;
+
 /**
  * WP_Conditional_Blocks
  */
 class WP_Conditional_Blocks {
+	use Singleton;
+
 	/**
 	 * Singleton instance for this class.
 	 *
@@ -24,24 +28,6 @@ class WP_Conditional_Blocks {
 	 * @var array
 	 */
 	private array $conditions = [];
-
-	/**
-	 * Private constructor.
-	 */
-	protected function __construct() {}
-
-	/**
-	 * Creates the singleton instance.
-	 *
-	 * @return self The singleton instance.
-	 */
-	public static function instance(): self {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
 
 	/**
 	 * Adds a condition.

@@ -29,7 +29,7 @@ class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	 * @return void
 	 */
 	public static function setUpBeforeClass(): void {
-		self::$instance = WP_Conditional_Blocks::instance();
+		self::$instance = WP_Conditional_Blocks::get_instance();
 	}
 
 	/**
