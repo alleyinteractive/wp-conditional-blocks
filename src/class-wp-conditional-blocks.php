@@ -66,7 +66,7 @@ class WP_Conditional_Blocks {
 			isset( $filtered_condition['name'], $filtered_condition['slug'], $filtered_condition['callable'] )
 			&& is_string( $filtered_condition['name'] )
 			&& is_string( $filtered_condition['slug'] )
-			&& is_callable( $filtered_condition['callabe'] )
+			&& is_callable( $filtered_condition['callable'] )
 		) {
 			$condition = $filtered_condition;
 		}
