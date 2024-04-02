@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types = 1 );
 /**
  * WP_Conditional_Blocks class file
  *
@@ -7,25 +7,25 @@
 
 namespace Alley\WP\WP_Conditional_Blocks;
 
+/**
+ * @phpstan-use-trait-for-class Singleton
+ */
 use Alley\WP\WP_Conditional_Blocks\traits\Singleton;
 
 /**
  * WP_Conditional_Blocks
  */
 class WP_Conditional_Blocks {
-	use Singleton;
 
 	/**
-	 * Singleton instance for this class.
-	 *
-	 * @var WP_Conditional_Blocks|null
+	 * @use Singleton<static>
 	 */
-	private static ?self $instance = null;
+	use Singleton;
 
 	/**
 	 * Array of conditions.
 	 *
-	 * @var array
+	 * @var list{array{name:string, slug:string, callable:callable}}|array{}
 	 */
 	private array $conditions = [];
 
@@ -55,8 +55,18 @@ class WP_Conditional_Blocks {
 		 *
 		 * @param array $condition The condition array.
 		 */
-		$condition = apply_filters( 'wp_conditional_blocks_add_condition', $condition );
+		$filtered_condition = apply_filters( 'wp_conditional_blocks_add_condition', $condition );
 
+		if (
+			isset( $filtered_condition['name'], $filtered_condition['slug'], $filtered_condition['callable'])
+			&& is_string( $filtered_condition['name'] )
+			&& is_string( $filtered_condition['slug'] )
+			&& is_callable( $filtered_condition['callabe'] )
+		) {
+			$condition = $filtered_condition;
+		}
+
+		// @phpstan-ignore-next-line
 		$this->conditions[] = $condition;
 
 		return true;
@@ -67,16 +77,16 @@ class WP_Conditional_Blocks {
 	 *
 	 * @param string $slug Slug of the condition.
 	 *
-	 * @return array|null
+	 * @return array{name:string, slug:string, callable:callable}|array{}
 	 */
-	public function get_condition( string $slug ): ?array {
+	public function get_condition( string $slug ): array {
 		$conditions = array_column( $this->conditions, null, 'slug' );
-		$condition  = $conditions[ $slug ] ?? null;
+		$condition  = $conditions[ $slug ] ?? [];
 
 		/**
 		 * Filters the condition.
 		 *
-		 * @param array $condition The condition array.
+		 * @param array{name:string, slug:string, callable:callable}|array{} $condition The condition array.
 		 * @param string $slug The condition's slug.
 		 */
 		return apply_filters( 'wp_conditional_blocks_get_condition', $condition, $slug );
@@ -85,7 +95,7 @@ class WP_Conditional_Blocks {
 	/**
 	 * Get all conditions
 	 *
-	 * @return array
+	 * @return array{int,array{name:string, slug:string, callable:callable}}|array{}
 	 */
 	public function get_conditions(): array {
 		$conditions = $this->conditions;
@@ -109,7 +119,7 @@ class WP_Conditional_Blocks {
 		$this->conditions = array_filter(
 			$this->conditions,
 			function ( $condition ) use ( $slug ) {
-				return $condition['slug'] !== $slug;
+				return ! empty( $condition['slug'] ) && $condition['slug'] !== $slug;
 			}
 		);
 	}

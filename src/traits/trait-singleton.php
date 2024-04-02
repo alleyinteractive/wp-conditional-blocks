@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types = 1 );
 /**
  * Trait file for Singletons.
  *
@@ -9,31 +9,33 @@ namespace Alley\WP\WP_Conditional_Blocks\traits;
 
 /**
  * Make a class into a singleton.
+ *
+ * @template T
  */
 trait Singleton {
 	/**
 	 * Singleton instance for this class.
 	 *
-	 * @var Singleton
+	 * @var self
 	 */
-	private static ?self $instance = null;
+	private static $instance = null;
 
 	/**
 	 * Get class instance.
 	 *
-	 * @return static
+	 * @return self
 	 */
-	public static function get_instance(): static {
-		if ( null === static::$instance ) {
-			static::$instance = new static();
+	public static function get_instance(): self {
+		if ( null === self::$instance ) {
+			self::$instance = new static();
 		}
 
-		return static::$instance;
+		return self::$instance;
 	}
 
 	/**
 	 * Private constructor to prevent instantiation from outside the class.
 	 */
-	private function __construct() {
+	final private function __construct() {
 	}
 }
