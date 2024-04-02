@@ -1,13 +1,17 @@
-<?php declare( strict_types = 1 );
+<?php
 /**
  * WP_Conditional_Blocks class file
  *
  * @package wp-conditional-blocks
  */
 
+declare( strict_types = 1 );
+
 namespace Alley\WP\WP_Conditional_Blocks;
 
 /**
+ * Sets up the Singleton trait use.
+ *
  * @phpstan-use-trait-for-class Singleton
  */
 use Alley\WP\WP_Conditional_Blocks\traits\Singleton;
@@ -16,8 +20,9 @@ use Alley\WP\WP_Conditional_Blocks\traits\Singleton;
  * WP_Conditional_Blocks
  */
 class WP_Conditional_Blocks {
-
 	/**
+	 * Use the singleton.
+	 *
 	 * @use Singleton<static>
 	 */
 	use Singleton;
@@ -58,7 +63,7 @@ class WP_Conditional_Blocks {
 		$filtered_condition = apply_filters( 'wp_conditional_blocks_add_condition', $condition );
 
 		if (
-			isset( $filtered_condition['name'], $filtered_condition['slug'], $filtered_condition['callable'])
+			isset( $filtered_condition['name'], $filtered_condition['slug'], $filtered_condition['callable'] )
 			&& is_string( $filtered_condition['name'] )
 			&& is_string( $filtered_condition['slug'] )
 			&& is_callable( $filtered_condition['callabe'] )

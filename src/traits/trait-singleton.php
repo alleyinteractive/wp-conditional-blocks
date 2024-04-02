@@ -1,9 +1,11 @@
-<?php declare( strict_types = 1 );
+<?php
 /**
  * Trait file for Singletons.
  *
  * @package wp-conditional-blocks
  */
+
+declare( strict_types = 1 );
 
 namespace Alley\WP\WP_Conditional_Blocks\traits;
 
