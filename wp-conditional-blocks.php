@@ -53,12 +53,13 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 
 // Load the plugin's main files.
 require_once __DIR__ . '/src/assets.php';
+require_once __DIR__ . '/src/class-wp-conditional-blocks.php';
 require_once __DIR__ . '/src/meta.php';
 
 /**
  * Instantiate the plugin.
  */
 function main(): void {
-	// ...
+	WP_Conditional_Blocks::get_instance();
 }
 main();
