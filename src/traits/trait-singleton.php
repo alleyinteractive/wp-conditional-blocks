@@ -40,4 +40,15 @@ trait Singleton {
 	 */
 	final private function __construct() {
 	}
+
+	/**
+	 * Initializes the class.
+	 *
+	 * Use this function instead of the constructor for any required initialization.
+	 *
+	 * @return void
+	 */
+	protected function init() {
+
+	}
 }
