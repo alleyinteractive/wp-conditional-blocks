@@ -49,6 +49,5 @@ trait Singleton {
 	 * @return void
 	 */
 	protected function init() {
-
 	}
 }
