@@ -7,7 +7,7 @@
 
 namespace Alley\WP\WP_Conditional_Blocks\Tests\Unit;
 
-use Alley\WP\WP_Conditional_Blocks\WP_Conditional_Blocks;
+use Alley\WP\WP_Conditional_Blocks\Conditions;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,13 +15,13 @@ use PHPUnit\Framework\TestCase;
  *
  * @link https://mantle.alley.com/testing/test-framework.html
  */
-class WP_Conditional_Blocks_Unit_Tests extends TestCase {
+class Conditions_Unit_Tests extends TestCase {
 	/**
 	 * Contains a static instance of the class.
 	 *
-	 * @var WP_Conditional_Blocks
+	 * @var Conditions
 	 */
-	private static WP_Conditional_Blocks $instance;
+	private static Conditions $instance;
 
 	/**
 	 * Fixture method to set up the state of the tests.
@@ -29,7 +29,7 @@ class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	 * @return void
 	 */
 	public static function setUpBeforeClass(): void {
-		self::$instance = WP_Conditional_Blocks::get_instance();
+		self::$instance = Conditions::get_instance();
 	}
 
 	/**
