@@ -55,6 +55,7 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 require_once __DIR__ . '/src/assets.php';
 require_once __DIR__ . '/src/class-conditions.php';
 require_once __DIR__ . '/src/meta.php';
+require_once __DIR__ . '/src/endpoints.php';
 
 /**
  * Instantiate the plugin.
