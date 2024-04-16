@@ -8,6 +8,7 @@
 namespace Alley\WP\WP_Conditional_Blocks\Tests\Unit;
 
 use Alley\WP\WP_Conditional_Blocks\Conditions;
+use Alley\WP\WP_Conditional_Blocks\Endpoint_Get_Conditions;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -116,5 +117,33 @@ class Conditions_Unit_Tests extends TestCase {
 				$condition['callable'],
 			);
 		}
+	}
+
+	public function test_get_conditions_endpoint(): void {
+		$this->add_test_conditions(
+			[
+				[
+					'name'     => 'Condition 1',
+					'slug'     => 'condition-1',
+					'callable' => fn() => true,
+				],
+				[
+					'name'     => 'Condition 2',
+					'slug'     => 'condition-2',
+					'callable' => fn() => true,
+				],
+			]
+		);
+
+		do_action( 'rest_api_init' );
+
+		$request  = new \WP_REST_Request( 'GET', '/conditional-blocks/v1/get-conditions/' );
+		$server   = rest_get_server();
+		$response = $server->dispatch( $request );
+		$data     = $response->get_data();
+
+		$this->assertIsArray( $data );
+		var_dump( $data );
+		$this->assertCount( 2, $data );
 	}
 }

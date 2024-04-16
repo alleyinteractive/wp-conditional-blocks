@@ -26,6 +26,7 @@ class Endpoint_Get_Conditions {
 		register_rest_route('conditional-blocks/v1', '/get-conditions/', [
 			'methods'  => 'GET',
 			'callback' => [ $this, 'get_response' ],
+			'permission_callback' => '__return_true',
 		] );
 	}
 
