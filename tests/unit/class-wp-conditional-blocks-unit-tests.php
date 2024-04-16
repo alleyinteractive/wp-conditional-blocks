@@ -135,15 +135,12 @@ class Conditions_Unit_Tests extends TestCase {
 			]
 		);
 
-		do_action( 'rest_api_init' );
-
-		$request  = new \WP_REST_Request( 'GET', '/conditional-blocks/v1/get-conditions/' );
+		$request  = new \WP_REST_Request( 'GET', '/conditional-blocks/v1/get-conditions' );
 		$server   = rest_get_server();
 		$response = $server->dispatch( $request );
 		$data     = $response->get_data();
 
 		$this->assertIsArray( $data );
-		var_dump( $data );
-		$this->assertCount( 2, $data );
+		$this->assertCount( 2, $data['message'] );
 	}
 }
