@@ -38,7 +38,22 @@ class Endpoint_Get_Conditions {
 		$conditions = Conditions::get_instance();
 
 		return new \WP_REST_Response( [
-			'message' => !empty( $conditions->get_conditions() ) ? $conditions->get_conditions() : 'No conditions found.'
+			'message' => !empty( $conditions->get_conditions() ) ? $this->format_conditions( $conditions->get_conditions() ) : 'No conditions found.'
 		], 200 );
+	}
+
+	/**
+	 * Formats the conditions.
+	 *
+	 * @param array{int, array{name:string, slug:string, callable:callable}} $conditions The conditions to be formatted.
+	 *
+	 *
+	 * @return array{array{name:string, slug:string}} formatted conditions.
+	 */
+	private function format_conditions( array $conditions ): array {
+		return array_map( function( $item ) {
+			unset( $item['callable'] );
+			return $item;
+		}, $conditions );
 	}
 }
