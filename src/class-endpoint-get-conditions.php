@@ -62,6 +62,10 @@ class Endpoint_Get_Conditions {
 	 */
 	private function format_conditions( array $conditions ): array {
 		return array_map(
+			/**
+			 * Removes the `callable`.
+			 * see https://github.com/alleyinteractive/wp-conditional-blocks/issues/14
+			 */
 			function ( $item ) {
 				unset( $item['callable'] );
 				return $item;
