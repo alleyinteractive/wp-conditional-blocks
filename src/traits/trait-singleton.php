@@ -30,6 +30,10 @@ trait Singleton {
 	public static function get_instance(): self {
 		if ( null === self::$instance ) {
 			self::$instance = new static();
+
+			if ( method_exists( self::$instance, 'init' ) ) {
+				self::$instance->init();
+			}
 		}
 
 		return self::$instance;
@@ -39,15 +43,5 @@ trait Singleton {
 	 * Private constructor to prevent instantiation from outside the class.
 	 */
 	final private function __construct() {
-	}
-
-	/**
-	 * Initializes the class.
-	 *
-	 * Use this function instead of the constructor for any required initialization.
-	 *
-	 * @return void
-	 */
-	protected function init() {
 	}
 }
