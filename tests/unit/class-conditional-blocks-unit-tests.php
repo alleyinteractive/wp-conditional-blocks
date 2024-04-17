@@ -8,7 +8,6 @@
 namespace Alley\WP\WP_Conditional_Blocks\Tests\Unit;
 
 use Alley\WP\WP_Conditional_Blocks\Conditions;
-use Alley\WP\WP_Conditional_Blocks\Endpoint_Get_Conditions;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @link https://mantle.alley.com/testing/test-framework.html
  */
-class Conditions_Unit_Tests extends TestCase {
+class Conditional_Blocks_Unit_Tests extends TestCase {
 	/**
 	 * Contains a static instance of the class.
 	 *
