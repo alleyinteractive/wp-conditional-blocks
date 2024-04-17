@@ -1,6 +1,6 @@
 <?php
 /**
- * This file registers REST API Endpoints.
+ * This file registers REST endpoints.
  *
  * @package wp-conditional-blocks
  */
@@ -8,11 +8,13 @@
 namespace Alley\WP\WP_Conditional_Blocks;
 
 /**
- * Registers endpoints.
+ * Boots the endpoints.
  *
  * @return void
  */
-function register_endpoints(): void {
-	new Endpoint_Get_Conditions();
+function boot_endpoints(): void {
+	$endpoints = new Endpoints();
+	$endpoints->boot();
 }
-register_endpoints();
+
+boot_endpoints();
