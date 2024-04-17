@@ -119,6 +119,11 @@ class Conditions_Unit_Tests extends TestCase {
 		}
 	}
 
+	/**
+	 * Test the get_conditions endpoint.
+	 *
+	 * @return void
+	 */
 	public function test_get_conditions_endpoint(): void {
 		$this->add_test_conditions(
 			[
