@@ -47,7 +47,7 @@ class Endpoint_Get_Conditions {
 
 		return new \WP_REST_Response(
 			[
-				'message' => ! empty( $conditions->get_conditions() ) ? $this->format_conditions( $conditions->get_conditions() ) : __( 'No conditions found.', 'wp-conditional-blocks' ),
+				'message' => $this->format_conditions( $conditions->get_conditions() ),
 			],
 			200
 		);
@@ -56,11 +56,15 @@ class Endpoint_Get_Conditions {
 	/**
 	 * Formats the conditions.
 	 *
-	 * @param array{int, array{name:string, slug:string, callable:callable}} $conditions The conditions to be formatted.
+	 * @param array{int, array{name:string, slug:string, callable:callable}}|array{} $conditions The conditions to be formatted.
 	 *
-	 * @return array{array{name:string, slug:string}} formatted conditions.
+	 * @return array{array{name:string, slug:string}}|array{} formatted conditions.
 	 */
 	private function format_conditions( array $conditions ): array {
+		if ( empty( $conditions ) ) {
+			return $conditions;
+		}
+
 		return array_map(
 			/**
 			 * Removes the `callable`.
