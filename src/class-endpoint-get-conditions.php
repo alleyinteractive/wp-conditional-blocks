@@ -32,7 +32,7 @@ class Endpoint_Get_Conditions {
 			[
 				'methods'             => 'GET',
 				'callback'            => [ $this, 'get_response' ],
-				'permission_callback' => '__return_true',
+				'permission_callback' => 'is_user_logged_in',
 			]
 		);
 	}

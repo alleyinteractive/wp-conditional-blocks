@@ -38,6 +38,8 @@ class Conditional_Blocks_Unit_Tests extends TestCase {
 	 * @return void
 	 */
 	public function setUp(): void {
+		parent::setUp();
+
 		// Reset the conditions before each test.
 		self::$instance->reset_conditions_for_testing();
 	}
@@ -139,12 +141,22 @@ class Conditional_Blocks_Unit_Tests extends TestCase {
 			]
 		);
 
+		// Create a user and log them in.
+		$user_id = wp_create_user( 'test_user', 'password', 'unit@test.com' );
+		wp_set_current_user( $user_id );
+
+		// Perform the REST request.
 		$request  = new \WP_REST_Request( 'GET', '/conditional-blocks/v1/get-conditions' );
 		$server   = rest_get_server();
 		$response = $server->dispatch( $request );
 		$data     = $response->get_data();
 
+		// Log out the user.
+		wp_set_current_user( null );
+
 		$this->assertIsArray( $data );
+
+		// We should have two items in the message, ie, both conditions.
 		$this->assertCount( 2, $data['message'] );
 	}
 }
