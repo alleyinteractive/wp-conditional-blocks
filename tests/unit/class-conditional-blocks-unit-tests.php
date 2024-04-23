@@ -7,7 +7,7 @@
 
 namespace Alley\WP\WP_Conditional_Blocks\Tests\Unit;
 
-use Alley\WP\WP_Conditional_Blocks\WP_Conditional_Blocks;
+use Alley\WP\WP_Conditional_Blocks\Conditions;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,13 +15,13 @@ use PHPUnit\Framework\TestCase;
  *
  * @link https://mantle.alley.com/testing/test-framework.html
  */
-class WP_Conditional_Blocks_Unit_Tests extends TestCase {
+class Conditional_Blocks_Unit_Tests extends TestCase {
 	/**
 	 * Contains a static instance of the class.
 	 *
-	 * @var WP_Conditional_Blocks
+	 * @var Conditions
 	 */
-	private static WP_Conditional_Blocks $instance;
+	private static Conditions $instance;
 
 	/**
 	 * Fixture method to set up the state of the tests.
@@ -29,7 +29,7 @@ class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	 * @return void
 	 */
 	public static function setUpBeforeClass(): void {
-		self::$instance = WP_Conditional_Blocks::get_instance();
+		self::$instance = Conditions::get_instance();
 	}
 
 	/**
@@ -38,6 +38,8 @@ class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 	 * @return void
 	 */
 	public function setUp(): void {
+		parent::setUp();
+
 		// Reset the conditions before each test.
 		self::$instance->reset_conditions_for_testing();
 	}
@@ -116,5 +118,45 @@ class WP_Conditional_Blocks_Unit_Tests extends TestCase {
 				$condition['callable'],
 			);
 		}
+	}
+
+	/**
+	 * Test the get_conditions endpoint.
+	 *
+	 * @return void
+	 */
+	public function test_get_conditions_endpoint(): void {
+		$this->add_test_conditions(
+			[
+				[
+					'name'     => 'Condition 1',
+					'slug'     => 'condition-1',
+					'callable' => fn() => true,
+				],
+				[
+					'name'     => 'Condition 2',
+					'slug'     => 'condition-2',
+					'callable' => fn() => true,
+				],
+			]
+		);
+
+		// Create a user and log them in.
+		$user_id = wp_create_user( 'test_user', 'password', 'unit@test.com' );
+		wp_set_current_user( $user_id );
+
+		// Perform the REST request.
+		$request  = new \WP_REST_Request( 'GET', '/conditional-blocks/v1/get-conditions' );
+		$server   = rest_get_server();
+		$response = $server->dispatch( $request );
+		$data     = $response->get_data();
+
+		// Log out the user.
+		wp_set_current_user( null );
+
+		$this->assertIsArray( $data );
+
+		// We should have two items in the message, ie, both conditions.
+		$this->assertCount( 2, $data['message'] );
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Conditional_Blocks class file
+ * Conditions class file
  *
  * @package wp-conditional-blocks
  */
@@ -17,9 +17,9 @@ namespace Alley\WP\WP_Conditional_Blocks;
 use Alley\WP\WP_Conditional_Blocks\traits\Singleton;
 
 /**
- * WP_Conditional_Blocks
+ * Conditions
  */
-class WP_Conditional_Blocks {
+class Conditions {
 	/**
 	 * Use the singleton.
 	 *
