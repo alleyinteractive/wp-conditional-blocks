@@ -47,6 +47,7 @@ function is_active_parent_block( string $block_name, ?WP_Block $parent_block ): 
  * @param bool     $result The expected result of the evaluation.
  * @param WP_Block $parent_block The parent block object.
  * @param callable $callback The callback to execute on true.
+ * @param array    ...$args An array of arguments passed to the callback function.
  * @return mixed
  */
 function on_bool( bool $result, WP_Block $parent_block, callable $callback, ...$args ): void {
@@ -56,7 +57,7 @@ function on_bool( bool $result, WP_Block $parent_block, callable $callback, ...$
 		$context['postId'] = $parent_block->context['postId'];
 	}
 
-	if( $result === wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) ) {
+	if ( wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) === $result ) {
 		$callback( ...$args );
 	}
 }
@@ -88,7 +89,7 @@ function pre_render_on_bool( string $block_name, bool $bool, $pre_render, $parse
 			$context['postId'] = $parent_block->context['postId'];
 		}
 
-		if( $bool !== wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) ) {
+		if ( wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) !== $bool ) {
 			$pre_render = '';
 		}
 	}
