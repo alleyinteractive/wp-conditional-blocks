@@ -16,9 +16,17 @@ use Alley\WP\WP_Conditional_Blocks\Tests\Test_Case;
  * @link https://mantle.alley.com/testing/test-framework.html
  */
 class True_False_Block_Test extends Test_Case {
+
+	/**
+	 * Verifies that the is-true block renders, while the is-false block does not render,
+	 * when a condition returns true.
+	 *
+	 * @test
+	 */
 	public function test_is_true_and_is_false_render_block_as_expected() {
-		$post = self::factory()->post->as_models()->create_and_get([
-			'post_content' => <<<HTML
+		$post = self::factory()->post->as_models()->create_and_get(
+			[
+				'post_content' => <<<HTML
 				<!-- wp:wp-conditional-blocks/condition {"post":"","query":"is_single"} -->
 				<div class="wp-block-wp-conditional-blocks-condition"><!-- wp:wp-conditional-blocks/is-true -->
 				<div class="wp-block-wp-conditional-blocks-is-true"><!-- wp:paragraph -->
@@ -32,8 +40,9 @@ class True_False_Block_Test extends Test_Case {
 				<!-- /wp:paragraph --></div>
 				<!-- /wp:wp-conditional-blocks/is-false --></div>
 				<!-- /wp:wp-conditional-blocks/condition -->
-			HTML
-		]);
+			HTML,
+			]
+		);
 
 		$this->get( $post->permalink() )
 			->assertSee( 'This is an is_single page.' )
