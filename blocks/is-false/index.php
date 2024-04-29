@@ -32,7 +32,7 @@ add_action( 'init', 'wp_conditional_blocks_is_false_block_init' );
  * Short-circuit the display of blocks inside if the outer condition isn't false.
  *
  * @param string|null   $pre_render   The pre-rendered content. Default null.
- * @param array         $parsed_block The block being rendered.
+ * @param mixed[]       $parsed_block The block being rendered.
  * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
  */
 function wp_conditional_blocks_pre_render_is_false_block( $pre_render, $parsed_block, $parent_block ): string|null {

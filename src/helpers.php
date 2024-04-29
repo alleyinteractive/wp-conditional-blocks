@@ -13,8 +13,8 @@ use WP_Block;
  * Check if the defined block is the active block. Useful in pre_render_block
  * callbacks.
  *
- * @param string     $block_name The block name to look for. Should be the full namespace.
- * @param array|null $parsed_block The parsed block array, or null.
+ * @param string       $block_name The block name to look for. Should be the full namespace.
+ * @param mixed[]|null $parsed_block The parsed block array, or null.
  * @return bool
  */
 function is_active_block( string $block_name, ?array $parsed_block ): bool {
@@ -47,8 +47,7 @@ function is_active_parent_block( string $block_name, ?WP_Block $parent_block ): 
  * @param bool     $result The expected result of the evaluation.
  * @param WP_Block $parent_block The parent block object.
  * @param callable $callback The callback to execute on true.
- * @param array    ...$args An array of arguments passed to the callback function.
- * @return mixed
+ * @param mixed[]  ...$args An array of arguments passed to the callback function.
  */
 function on_bool( bool $result, WP_Block $parent_block, callable $callback, ...$args ): void {
 	$context = [];
@@ -69,7 +68,7 @@ function on_bool( bool $result, WP_Block $parent_block, callable $callback, ...$
  * @param string        $block_name   The block name to run on.
  * @param bool          $bool         True or false. The expected value of the evaluation.
  * @param string|null   $pre_render   The pre-rendered content. Default null.
- * @param array         $parsed_block The block being rendered.
+ * @param mixed[]       $parsed_block The block being rendered.
  * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
  */
 function pre_render_on_bool( string $block_name, bool $bool, $pre_render, $parsed_block, $parent_block ): string|null {
@@ -89,7 +88,7 @@ function pre_render_on_bool( string $block_name, bool $bool, $pre_render, $parse
 			$context['postId'] = $parent_block->context['postId'];
 		}
 
-		if ( wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) !== $bool ) {
+		if ( wp_conditional_blocks_condition_block_result( $parent_block->parsed_block, $context ) !== $bool ) { // @phpstan-ignore-line
 			$pre_render = '';
 		}
 	}
