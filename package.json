@@ -3,8 +3,8 @@
   "license": "GPL-2.0-or-later",
   "main": "wp-conditional-blocks.php",
   "engines": {
-    "node": "16",
-    "npm": "8"
+    "node": "20",
+    "npm": "10"
   },
   "browserslist": [
     "defaults",
