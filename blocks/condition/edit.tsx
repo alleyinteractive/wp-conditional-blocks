@@ -13,9 +13,16 @@ interface EditProps {
   setAttributes: (attributes: any) => void;
 }
 
+// Structure for the SelectControl options.
 interface Conditions {
   value: string;
   label: string;
+}
+
+// Structure coming from Conditions API.
+interface Condition {
+  slug: string;
+  name: string;
 }
 
 /**
@@ -37,7 +44,7 @@ export default function Edit({
       .then((response) => {
         // @ts-ignore
         if (Array.isArray(response.message) && response.message.length > 0) {
-          const nextConditions = response.message.map((condition) => ({
+          const nextConditions = response.message.map((condition: Condition) => ({
             value: condition.slug ?? '',
             label: condition.name ?? '',
           }));
