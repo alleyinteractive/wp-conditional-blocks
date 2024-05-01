@@ -40,10 +40,10 @@ export default function Edit({
 
   // Fetch and set the Conditions data.
   useEffect(() => {
-    apiFetch({path: '/conditional-blocks/v1/get-conditions/'})
+    apiFetch({ path: '/conditional-blocks/v1/get-conditions/' })
       .then((response: any) => {
         if (Array.isArray(response.message) && response.message.length > 0) {
-          const nextConditions = response.message.map((condition: Condition) => ({
+          const nextConditions = response.message.map((condition) => ({
             value: condition.slug ?? '',
             label: condition.name ?? '',
           }));
