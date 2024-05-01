@@ -72,7 +72,7 @@ export default function Edit({
           <PanelRow>
             {/* @ts-ignore-next-line */}
             <SelectControl
-              label={__('Conditionals', 'wp-conditional-blocks')}
+              label={__('Conditions', 'wp-conditional-blocks')}
               help={__('Select condition, e.g. "Is Home" or "Is Archive"', 'wp-conditional-blocks')}
               onChange={(next) => setAttributes({ condition: next })}
               multiple={false}
