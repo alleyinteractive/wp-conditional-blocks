@@ -41,8 +41,7 @@ export default function Edit({
   // Fetch and set the Conditions data.
   useEffect(() => {
     apiFetch({path: '/conditional-blocks/v1/get-conditions/'})
-      .then((response) => {
-        // @ts-ignore
+      .then((response: any) => {
         if (Array.isArray(response.message) && response.message.length > 0) {
           const nextConditions = response.message.map((condition: Condition) => ({
             value: condition.slug ?? '',
