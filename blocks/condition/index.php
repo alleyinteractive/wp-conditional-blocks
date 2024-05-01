@@ -54,7 +54,6 @@ function wp_conditional_blocks_condition_block_result( array $parsed_block, arra
 	// Validate callable function.
 	if (
 		empty( $wp_block_condition['callable'] )
-		|| false === is_callable( $wp_block_condition['callable'] )
 		|| ! $wp_query instanceof WP_Query
 	) {
 		return false;
