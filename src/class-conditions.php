@@ -151,7 +151,7 @@ class Conditions {
 	}
 
 	/**
-	 * Crates and adds default conditions.
+	 * Creates and adds default conditions.
 	 *
 	 * @return void
 	 */
