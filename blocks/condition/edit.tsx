@@ -20,7 +20,7 @@ interface Conditions {
 }
 
 // Structure coming from Conditions API.
-interface Condition {
+interface BlockCondition {
   slug: string;
   name: string;
 }
@@ -43,7 +43,7 @@ export default function Edit({
     apiFetch({ path: '/conditional-blocks/v1/get-conditions/' })
       .then((response: any) => {
         if (Array.isArray(response.message) && response.message.length > 0) {
-          const nextConditions = response.message.map((blockCondition: Condition) => ({
+          const nextConditions = response.message.map((blockCondition: BlockCondition) => ({
             value: blockCondition.slug ?? '',
             label: blockCondition.name ?? '',
           }));
