@@ -43,7 +43,8 @@ export default function Edit({
     apiFetch({ path: '/conditional-blocks/v1/get-conditions/' })
       .then((response: any) => {
         if (Array.isArray(response.message) && response.message.length > 0) {
-          const nextConditions = response.message.map((condition) => ({
+          /* @ts-ignore-next-line */
+          const nextConditions = response.message.map((condition: Condition) => ({
             value: condition.slug ?? '',
             label: condition.name ?? '',
           }));
