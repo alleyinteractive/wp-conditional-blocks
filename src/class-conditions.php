@@ -130,6 +130,15 @@ class Conditions {
 	}
 
 	/**
+	 * Initializes the conditions.
+	 *
+	 * @return void
+	 */
+	public function init(): void {
+		add_action( 'init', [ $this, 'add_default_conditions' ] );
+	}
+
+	/**
 	 * Resets the conditions for testing purposes.
 	 *
 	 * @internal
@@ -139,5 +148,17 @@ class Conditions {
 	 */
 	public function reset_conditions_for_testing(): void {
 		$this->conditions = [];
+	}
+
+	/**
+	 * Crates and adds default conditions.
+	 *
+	 * @return void
+	 */
+	public function add_default_conditions(): void {
+		$this->add_condition( 'Is Archive Page', 'is_archive', fn() => is_archive() );
+		$this->add_condition( 'Is Home Page', 'is_home_page', fn() => is_home() || is_front_page() );
+		$this->add_condition( 'Is Search Page', 'is_search', fn() => is_search() );
+		$this->add_condition( 'Is Single', 'is_single', fn() => is_single() );
 	}
 }
