@@ -14,19 +14,6 @@
   "attributes": {
     "condition": {
       "type": "string"
-    },
-    "custom": {
-      "type": "string"
-    },
-    "post": {
-      "type": "string"
-    },
-    "query": {
-      "type": "string"
-    },
-    "index": {
-      "type": "object",
-      "default": { "": "" }
     }
   }
 }
