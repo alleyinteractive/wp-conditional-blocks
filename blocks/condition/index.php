@@ -10,7 +10,7 @@
 
 use Alley\WP\WP_Conditional_Blocks\Global_Post_Query;
 use Alley\WP\WP_Conditional_Blocks\Validator\Slug_Is_In_Category;
-use \Alley\WP\WP_Conditional_Blocks\Conditions;
+use Alley\WP\WP_Conditional_Blocks\Conditions;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -54,7 +54,7 @@ function wp_conditional_blocks_condition_block_result( array $parsed_block, arra
 	// Validate callable function.
 	if (
 		empty( $wp_block_condition['callable'] )
-		|| ! is_callable( $wp_block_condition['callable'] )
+		|| false === is_callable( $wp_block_condition['callable'] )
 		|| ! $wp_query instanceof WP_Query
 	) {
 		return false;
@@ -63,7 +63,7 @@ function wp_conditional_blocks_condition_block_result( array $parsed_block, arra
 	// Execute conditional's callable.
 	$callable_result = call_user_func( $wp_block_condition['callable'] );
 
-	 /**
+	/**
 	 * Filters the condition block's result for the given condition.
 	 *
 	 * @param bool     $result   Condition result.

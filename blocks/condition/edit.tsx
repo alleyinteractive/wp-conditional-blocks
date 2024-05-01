@@ -33,19 +33,19 @@ export default function Edit({
 
   // Fetch and set the Conditions data.
   useEffect(() => {
-    apiFetch({ path: '/conditional-blocks/v1/get-conditions/' })
+    apiFetch({path: '/conditional-blocks/v1/get-conditions/'})
       .then((response) => {
-      if (response.message.length > 0) {
-        const nextConditions = response.message.map((condition) => ({
-          value: condition.slug ?? '',
-          label: condition.name ?? '',
-        }));
-        setConditions(nextConditions);
-      } else {
-        console.error('[wp-block-conditions] Failed to retrieve conditions.');
-      }
-    }
-    );
+        // @ts-ignore
+        if (Array.isArray(response.message) && response.message.length > 0) {
+          const nextConditions = response.message.map((condition) => ({
+            value: condition.slug ?? '',
+            label: condition.name ?? '',
+          }));
+          setConditions(nextConditions);
+        } else {
+          console.error('[wp-block-conditions] Failed to retrieve conditions.');
+        }
+      });
   }, []);
 
   return (
