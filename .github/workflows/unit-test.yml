@@ -1,0 +1,38 @@
+name: Testing Suite
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+  # Uncomment and edit the following to run on a schedule.
+  # schedule:
+  #   - cron: '30 5 * * 0' # Run once per week at 5:30am UTC on Sundays.
+
+jobs:
+  checkout-code:
+    uses: actions/checkout@v4
+    with:
+      submodules: 'recursive'
+
+  node-tests:
+    uses: alleyinteractive/.github/.github/workflows/node-tests@feature/issue-86/allow-building-during-testing
+    with:
+      checkout: false
+      check-gitignore: false
+      check-git-conflicts: false
+      run-audit: false
+      run-test: false
+      run-lint: false
+      run-build: true
+
+  php-tests:
+    strategy:
+      matrix:
+        php: [8.1, 8.2]
+        wordpress: ["latest"]
+    uses: alleyinteractive/.github/.github/workflows/php-tests@feature/issue-86/allow-building-during-testing
+    with:
+      php: ${{ matrix.php }}
+      wordpress: ${{ matrix.wordpress }}
+      checkout: false
