@@ -23,7 +23,7 @@ jobs:
     with:
       checkout: false
       check-gitignore: false
-      check-git-conflicts: false
+      check-git-conflict: false
       run-audit: false
       run-test: false
       run-lint: false
