@@ -11,9 +11,11 @@ on:
 
 jobs:
   checkout-code:
-    uses: actions/checkout@v4
-    with:
-      submodules: 'recursive'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
 
   node-tests:
     uses: alleyinteractive/.github/.github/workflows/node-tests@feature/issue-86/allow-building-during-testing
