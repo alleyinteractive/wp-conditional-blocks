@@ -10,12 +10,34 @@ on:
   #   - cron: '30 5 * * 0' # Run once per week at 5:30am UTC on Sundays.
 
 jobs:
+  checkout-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+  node-tests:
+    needs: checkout-code
+    uses: alleyinteractive/.github/.github/workflows/node-tests.yml@feature/issue-86/allow-building-during-testing
+    with:
+      checkout: false
+      check-gitignore: false
+      check-git-conflict: false
+      run-audit: false
+      run-test: false
+      run-lint: false
+      run-build: true
+
   php-tests:
+    needs: [checkout-code, node-tests]
     strategy:
       matrix:
         php: [8.1, 8.2]
         wordpress: ["latest"]
-    uses: alleyinteractive/.github/.github/workflows/php-tests.yml@main
+    uses: alleyinteractive/.github/.github/workflows/php-tests.yml@feature/issue-86/allow-building-during-testing
     with:
       php: ${{ matrix.php }}
       wordpress: ${{ matrix.wordpress }}
+      checkout: false
