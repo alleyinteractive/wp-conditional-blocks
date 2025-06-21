@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@alleyinteractive/block-editor-tools": "^0.12.2",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/wordpress__block-editor": "^11.5.0",
     "@wordpress/a11y": "^3.30.0",
     "@wordpress/annotations": "^2.30.0",
@@ -112,7 +112,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "eslint-import-resolver-webpack": "^0.13.10",
-    "jest": "^30.0.0",
+    "jest": "^30.0.2",
     "mini-css-extract-plugin": "^2.9.2",
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3",
