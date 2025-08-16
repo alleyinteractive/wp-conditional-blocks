@@ -110,7 +110,7 @@
     "babel-jest": "^30.0.4",
     "check-node-version": "^4.2.1",
     "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^13.0.0",
+    "copy-webpack-plugin": "^13.0.1",
     "eslint-import-resolver-webpack": "^0.13.10",
     "jest": "^30.0.5",
     "mini-css-extract-plugin": "^2.9.4",
