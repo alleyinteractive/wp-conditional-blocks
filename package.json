@@ -102,7 +102,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@alleyinteractive/create-entry": "^0.1.0",
+    "@alleyinteractive/create-entry": "^0.2.0",
     "@alleyinteractive/eslint-config": "^0.2.0",
     "@alleyinteractive/stylelint-config": "^0.1.0",
     "@babel/preset-env": "^7.28.3",
